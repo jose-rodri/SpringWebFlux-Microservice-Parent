@@ -92,7 +92,7 @@ public class ParentController {
 	
 	@GetMapping("/{id}")
 	public Mono<ResponseEntity<Parent>> ver(@PathVariable String id ){
-		return service.findById(id).map( p -> ResponseEntity.ok()
+		return service.findById(id).map(p -> ResponseEntity.ok()
 				.contentType(MediaType.APPLICATION_JSON_UTF8)
 				.body(p))
 				.defaultIfEmpty(ResponseEntity.notFound().build());

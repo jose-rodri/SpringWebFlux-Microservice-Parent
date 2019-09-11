@@ -24,6 +24,7 @@ public class SpringBootProyectoEverisParentApplication  implements CommandLineRu
 
 	@Autowired
 	private ReactiveMongoTemplate mongoTemplate;
+	
 	private static final Logger log = LoggerFactory.getLogger(SpringBootProyectoEverisParentApplication.class);
 
 
