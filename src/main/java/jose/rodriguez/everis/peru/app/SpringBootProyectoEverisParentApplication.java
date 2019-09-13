@@ -14,8 +14,10 @@ import jose.rodriguez.everis.peru.app.models.document.Parent;
 
 import jose.rodriguez.everis.peru.app.models.service.ParentService;
 import reactor.core.publisher.Flux;
+import springfox.documentation.swagger2.annotations.EnableSwagger2WebFlux;
 
 @SpringBootApplication
+@EnableSwagger2WebFlux
 public class SpringBootProyectoEverisParentApplication  implements CommandLineRunner{
 
 	

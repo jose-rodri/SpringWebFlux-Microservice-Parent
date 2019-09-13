@@ -24,20 +24,10 @@ public class ParentServiceImpl implements ParentService {
 	@Override
 	public Mono<Parent> findByName(String name) {
 		// TODO Auto-generated method stub
-		return dao.findById(name);
+		return dao.findByName(name);
 	}
 
-	@Override
-	public Mono<Parent> findByDocument(String dni) {
-		// TODO Auto-generated method stub
-		return dao.findById(dni);
-	}
 
-	@Override
-	public Mono<Parent> findByBetweenDate() {
-		
-		return null;
-	}
 
 	@Override
 	public Mono<Parent> findById(String id) {
