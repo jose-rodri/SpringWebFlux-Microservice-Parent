@@ -41,7 +41,7 @@ public class SpringBootProyectoEverisParentApplication implements CommandLineRun
   @Override
   public void run(String... args) throws Exception {
    
-    
+    /*
     mongoTemplate.dropCollection("parents").subscribe();
 
 
@@ -60,7 +60,7 @@ public class SpringBootProyectoEverisParentApplication implements CommandLineRun
             + "- LastName : " + st.getLastName() + " " + "- Gender : " + st.getGender() + " "
             + "- Date : " + st.getDate() + " " + "- TypeDocument : " + st.getTypeDocument() + " "
             + "- Document : " + st.getDocument()));
-
+*/
   }
 
 }

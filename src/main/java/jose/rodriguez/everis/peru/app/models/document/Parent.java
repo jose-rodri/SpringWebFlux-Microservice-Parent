@@ -10,6 +10,8 @@ import lombok.Setter;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.format.annotation.DateTimeFormat;
+import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonFormat.Shape;
 
 /**.
  * José Rodriguez
@@ -32,7 +34,7 @@ public class Parent {
   private String lastName;
   @NotEmpty
   private String gender;
-  @DateTimeFormat(pattern = "yyy-MM-dd")
+  @JsonFormat(pattern = "yyyy-MM-dd", shape = Shape.STRING)
   private Date date;
   @NotEmpty
   private String typeDocument;

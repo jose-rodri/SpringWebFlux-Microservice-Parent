@@ -1,0 +1,93 @@
+use parent
+
+db.parents.insert([
+{
+"name": "Romero",
+"lastName": "Mesaín",
+"gender": "M",
+"date": ISODate("2000-01-02"),
+"typeDocument": "Dni",
+"document": 14232141
+},
+{
+"name": "Nestor",
+"lastName": "Fashh",
+"gender": "M",
+"date": ISODate("2001-02-03"),
+"typeDocument": "Dni",
+"document": 78412415
+},
+{
+"name": "Zoe",
+"lastName": "Boggio",
+"gender": "F",
+"date": ISODate("2002-03-04"),
+"typeDocument": "Dni",
+"document": 24153254
+},
+{
+"name": "José",
+"lastName": "Rodriguez",
+"gender": "M",
+"date": ISODate("2003-04-05"),
+"typeDocument": "Dni",
+"document": 35264511
+},
+{
+"name": "Eyleen",
+"lastName": "Barboza",
+"gender": "M",
+"date": ISODate("2004-03-06"),
+"typeDocument": "Dni",
+"document": 89875522
+},
+{
+"name": "julio",
+"lastName": "Zenn",
+"gender": "M",
+"date": ISODate("2005-05-07"),
+"typeDocument": "Dni",
+"document": 98567855
+},
+{
+"name": "Niurca",
+"lastName": "Sanchéz",
+"gender": "F",
+"date": ISODate("2006-09-08"),
+"typeDocument": "Dni",
+"document": 96859786
+}
+,
+{
+"name": "Dorita",
+"lastName": "Flux",
+"gender": "F",
+"date": ISODate("2007-05-09"),
+"typeDocument": "Dni",
+"document": 89658999
+},
+{
+"name": "Vero",
+"lastName": "Neto",
+"gender": "F",
+"date": ISODate("2008-04-10"),
+"typeDocument": "Dni",
+"document": 98636589
+}
+,
+{
+"name": "Melany",
+"lastName": "Juay",
+"gender": "M",
+"date": ISODate("2009-09-11"),
+"typeDocument": "Dni",
+"document": 96859876
+},
+{
+"name": "Elenita",
+"lastName": "Sou",
+"gender": "F",
+"date": ISODate("2010-04-12"),
+"typeDocument": "Dni",
+"document": 74857854
+}])
