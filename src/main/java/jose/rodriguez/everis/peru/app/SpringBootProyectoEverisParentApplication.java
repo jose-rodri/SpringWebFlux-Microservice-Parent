@@ -28,28 +28,38 @@ public class SpringBootProyectoEverisParentApplication implements CommandLineRun
       LoggerFactory.getLogger(SpringBootProyectoEverisParentApplication.class);
 
 
+  /**.
+   * c
+   */
   public static void main(String[] args) {
     SpringApplication.run(SpringBootProyectoEverisParentApplication.class, args);
+    
+    
   }
+ 
 
   @Override
   public void run(String... args) throws Exception {
+   
+    
     mongoTemplate.dropCollection("parents").subscribe();
 
 
 
-    Flux.just(new Parent("Feliciano", "Valdelomar", "M", "Dni", 9857123),
-        new Parent("Alicia", "Cardenas", "F", "Dni", 98574111),
-        new Parent("Luciana", "Conde", "F", "Dni", 9857487),
-        new Parent("Fermín", "Zonas", "M", "Dni", 98574887),
-        new Parent("Teresa", "Torres", "F", "Dni", 98574099),
-        new Parent("Eliana", "Ormeg", "F", "Dni", 98574333),
-        new Parent("Arturo", "Site", "M", "Dni", 98574656)).flatMap(std -> {
+    Flux.just(new Parent("Feliciano", "Valdelomar", "M", new Date(), "Dni", 9857123),
+        new Parent("Alicia", "Cardenas", "F", new Date(), "Dni", 98574111),
+        new Parent("Luciana", "Conde", "F", new Date(), "Dni", 9857487),
+        new Parent("Fermín", "Zonas", "M", new Date(), "Dni", 98574887),
+        new Parent("Teresa", "Torres", "F", new Date(), "Dni", 98574099),
+        new Parent("Eliana", "Ormeg", "F", new Date(), "Dni", 98574333),
+        new Parent("Arturo", "Site", "M", new Date(), "Dni", 98574656)).flatMap(std -> {
           std.setDate(new Date());
           return service.save(std);
-        }).subscribe(st -> log.info("Insert: " + st.getId() + " " + st.getLastName()));
-
-
+        })
+        .subscribe(st -> log.info("- Id : " + st.getId() + " " + "- Name : " + st.getName() + " "
+            + "- LastName : " + st.getLastName() + " " + "- Gender : " + st.getGender() + " "
+            + "- Date : " + st.getDate() + " " + "- TypeDocument : " + st.getTypeDocument() + " "
+            + "- Document : " + st.getDocument()));
 
   }
 

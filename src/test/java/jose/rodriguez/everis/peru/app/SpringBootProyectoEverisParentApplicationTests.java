@@ -1,6 +1,7 @@
 package jose.rodriguez.everis.peru.app;
 
 import java.util.Collections;
+import java.util.Date;
 import java.util.List;
 import jose.rodriguez.everis.peru.app.models.document.Parent;
 import jose.rodriguez.everis.peru.app.models.service.ParentService;
@@ -67,7 +68,7 @@ public class SpringBootProyectoEverisParentApplicationTests {
   @Test
   public void updateTest() {
     Parent parent = service.findByName("Arturo").block();
-    Parent parentEditado = new Parent("Arturo", "Gady", "M", "dni", 58788878);
+    Parent parentEditado = new Parent("Arturo", "Gady", "M",new Date(), "dni", 58788878);
     client.put().uri("/api/everis/parents/{id}", Collections.singletonMap("id", parent.getId()))
         .contentType(MediaType.APPLICATION_JSON_UTF8).accept(MediaType.APPLICATION_JSON_UTF8)
         .body(Mono.just(parentEditado), Parent.class).exchange().expectStatus().isCreated()
@@ -91,21 +92,19 @@ public class SpringBootProyectoEverisParentApplicationTests {
   
 
  
-  /*
-  @Test public void saveTest() { Parent parent = new Parent("Carlos","Ron","M","dni", 98696632);
-        client.post()
-        .uri("/api/everis/parents")
-       .contentType(MediaType.APPLICATION_JSON_UTF8)
-       .accept(MediaType.APPLICATION_JSON_UTF8)
-       .body(Mono.just(parent), Parent.class).exchange()
-       .expectStatus().isOk()
-       .expectHeader().contentType(MediaType.APPLICATION_JSON_UTF8)
-       .expectBody()
-       .jsonPath("$.id").isNotEmpty()
-       .jsonPath("$.name").isEqualTo("Carlos");
-  
+  /**
+   * . s
+   */
+  @Test
+  public void saveTest() {
+    Parent parent = new Parent("Carlos", "Ron", "M", new Date(), "dni", 98696632);
+    client.post().uri("/api/everis/parents").contentType(MediaType.APPLICATION_JSON_UTF8)
+        .accept(MediaType.APPLICATION_JSON_UTF8).body(Mono.just(parent), Parent.class).exchange()
+        .expectStatus().isCreated().expectHeader().contentType(MediaType.APPLICATION_JSON_UTF8)
+        .expectBody().jsonPath("$.id").isNotEmpty().jsonPath("$.name").isEqualTo("Carlos");
+
   }
  
-*/
+
 
 }

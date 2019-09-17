@@ -4,6 +4,9 @@ import java.util.Date;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import lombok.Data;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.format.annotation.DateTimeFormat;
@@ -12,7 +15,10 @@ import org.springframework.format.annotation.DateTimeFormat;
  * José Rodriguez
  *
  */
-@Data
+
+@Getter
+@Setter
+@NoArgsConstructor
 @Document(collection = "parents")
 public class Parent {
 
@@ -32,24 +38,27 @@ public class Parent {
   private String typeDocument;
   @NotNull
   private int document;
-
-
-
-  public Parent() {
-
-  }
-
-  /**t.
+ 
+  
+  /**.
+   *f
    */
-  public Parent(String name, String lastName, String gender, String typeDocument, int document) {
-
+  public Parent(String name,  String lastName,  String gender,
+      Date date,  String typeDocument,  int document) {
+   
     this.name = name;
     this.lastName = lastName;
     this.gender = gender;
+    this.date = date;
     this.typeDocument = typeDocument;
     this.document = document;
   }
 
+
+
+  /**t.
+   */
+  
 
 
 
