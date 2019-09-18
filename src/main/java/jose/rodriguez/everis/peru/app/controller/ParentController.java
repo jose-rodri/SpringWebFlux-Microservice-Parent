@@ -90,7 +90,7 @@ public class ParentController {
 
 
   /**.
-   * Método eliminar
+   * Método eliminar y prueba unión de ramas parent
    * @return
    */
   @DeleteMapping("/{id}")
