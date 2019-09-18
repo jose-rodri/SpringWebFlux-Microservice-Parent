@@ -44,7 +44,7 @@ public class SpringBootProyectoEverisParentApplication implements CommandLineRun
     /*
     mongoTemplate.dropCollection("parents").subscribe();
 
-
+   
 
     Flux.just(new Parent("Feliciano", "Valdelomar", "M", new Date(), "Dni", 9857123),
         new Parent("Alicia", "Cardenas", "F", new Date(), "Dni", 98574111),

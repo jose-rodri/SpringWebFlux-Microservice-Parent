@@ -30,7 +30,7 @@ public class ParentController {
   private ParentService service;
 
   /**.
-   * Método listar
+   * Método listar coment
    */
   @GetMapping
   public Mono<ResponseEntity<Flux<Parent>>> findAll() {
@@ -91,7 +91,6 @@ public class ParentController {
 
 
   /**.
-   * Método eliminar.
    * @return
    */
   @DeleteMapping("/{id}")
@@ -102,5 +101,5 @@ public class ParentController {
     }).defaultIfEmpty(new ResponseEntity<Void>(HttpStatus.NOT_FOUND));
   }
 
-
+//nuevo
 }
