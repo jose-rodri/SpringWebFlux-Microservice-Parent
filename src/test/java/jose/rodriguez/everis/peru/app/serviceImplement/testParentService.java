@@ -18,6 +18,10 @@ import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 import reactor.test.StepVerifier;
 
+/**
+ * @author jquispro
+ *
+ */
 @RunWith(SpringRunner.class)
 @AutoConfigureWebTestClient
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.MOCK)
@@ -125,9 +129,9 @@ public class testParentService {
     p.setDate(new Date());
     p.setTypeDocument("dni");
     p.setDocument(96895756);
-    final String name = "736723727";
-    when(parentDao.findByName(name)).thenReturn(Mono.just(p));
-    Mono<Parent> actual = parentService.findByName(name);
+   
+    when(parentDao.findByName("Mae")).thenReturn(Mono.just(p));
+    Mono<Parent> actual = parentService.findByName("Mae");
     assertResults(actual, p);
   }
 
