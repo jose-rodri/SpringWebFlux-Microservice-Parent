@@ -25,6 +25,7 @@ import reactor.core.publisher.Mono;
 public class ParentController {
 
   
+  
   @Autowired
   private ParentService service;
 
@@ -69,7 +70,7 @@ public class ParentController {
 
   /**.
    
-   * Método actualizar
+   * Método actualizar.
    * 
    */
   @PutMapping("/{id}")
@@ -90,7 +91,6 @@ public class ParentController {
 
 
   /**.
-   * Método eliminar y prueba unión de ramas parent
    * @return
    */
   @DeleteMapping("/{id}")
