@@ -41,57 +41,68 @@ public class testController {
 
   }
 
-    /**.
-   * Test 
+  /**
+   * . Test
    */
   @Test
   public void findByIdParentTest() {
 
     Parent parent = service.findByName("Alicia").block();
 
-    client.get().uri("/api/everis/parents/{id}", Collections.singletonMap("id", parent.getId()))
-        .accept(MediaType.APPLICATION_JSON_UTF8).exchange().expectStatus().isOk().expectHeader()
-        .contentType(MediaType.APPLICATION_JSON_UTF8).expectBody(Parent.class)
-        .consumeWith(response -> {
-          Parent p = response.getResponseBody();
-          Assertions.assertThat(p.getId()).isNotEmpty();
-          Assertions.assertThat(p.getId().length() > 0).isTrue();
-          Assertions.assertThat(p.getName()).isEqualTo("Alicia");
+    if (parent != null) {
 
-        });
+      client.get().uri("/api/everis/parents/{id}", Collections.singletonMap("id", parent.getId()))
+          .accept(MediaType.APPLICATION_JSON_UTF8).exchange().expectStatus().isOk().expectHeader()
+          .contentType(MediaType.APPLICATION_JSON_UTF8).expectBody(Parent.class)
+          .consumeWith(response -> {
+            Parent p = response.getResponseBody();
+            Assertions.assertThat(p.getId()).isNotEmpty();
+            Assertions.assertThat(p.getId().length() > 0).isTrue();
+            Assertions.assertThat(p.getName()).isEqualTo("Alicia");
 
+          });
+
+    }
   }
 
-  /**.
-   * Test 
+  /**
+   * . Test
    */
   @Test
   public void updateTest() {
     Parent parent = service.findByName("Arturo").block();
-    Parent parentEditado = new Parent("Arturo", "Gady", "M",new Date(), "dni", 58788878);
-    client.put().uri("/api/everis/parents/{id}", Collections.singletonMap("id", parent.getId()))
-        .contentType(MediaType.APPLICATION_JSON_UTF8).accept(MediaType.APPLICATION_JSON_UTF8)
-        .body(Mono.just(parentEditado), Parent.class).exchange().expectStatus().isCreated()
-        .expectHeader().contentType(MediaType.APPLICATION_JSON_UTF8).expectBody().jsonPath("$.id")
-        .isNotEmpty().jsonPath("$.name").isEqualTo("Arturo").jsonPath("$.lastName")
-        .isEqualTo("Gady").jsonPath("$.gender").isEqualTo("M").jsonPath("$.typeDocument")
-        .isEqualTo("dni").jsonPath("$.document").isEqualTo(58788878);
 
+    if (parent != null) {
+
+      Parent parentEditado = new Parent("Arturo", "Gady", "M", new Date(), "dni", 58788878);
+      client.put().uri("/api/everis/parents/{id}", Collections.singletonMap("id", parent.getId()))
+          .contentType(MediaType.APPLICATION_JSON_UTF8).accept(MediaType.APPLICATION_JSON_UTF8)
+          .body(Mono.just(parentEditado), Parent.class).exchange().expectStatus().isCreated()
+          .expectHeader().contentType(MediaType.APPLICATION_JSON_UTF8).expectBody().jsonPath("$.id")
+          .isNotEmpty().jsonPath("$.name").isEqualTo("Arturo").jsonPath("$.lastName")
+          .isEqualTo("Gady").jsonPath("$.gender").isEqualTo("M").jsonPath("$.typeDocument")
+          .isEqualTo("dni").jsonPath("$.document").isEqualTo(58788878);
+    }
   }
 
-  /**.
-   * Test 
+  /**
+   * . Test
    */
   @Test
   public void deleteTest() {
+    
     Parent parent = service.findByName("Luciana").block();
-    client.delete().uri("/api/everis/parents/{id}", Collections.singletonMap("id", parent.getId()))
-        .exchange().expectStatus().isNoContent().expectBody().isEmpty();
+    
+    if (parent != null) {
+      
+      client.delete()
+          .uri("/api/everis/parents/{id}", Collections.singletonMap("id", parent.getId()))
+          .exchange().expectStatus().isNoContent().expectBody().isEmpty();
+
+    }
 
   }
-  
 
- 
   /**
    * . s
    */
@@ -104,7 +115,7 @@ public class testController {
         .expectBody().jsonPath("$.id").isNotEmpty().jsonPath("$.name").isEqualTo("Carlos");
 
   }
- 
+
 
 
 }
