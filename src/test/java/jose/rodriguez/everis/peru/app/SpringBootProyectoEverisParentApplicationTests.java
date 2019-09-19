@@ -52,14 +52,14 @@ public class SpringBootProyectoEverisParentApplicationTests {
 
     if (parent != null) {
 
-    client.get().uri("/api/everis/parents/{id}", Collections.singletonMap("id", parent.getId()))
-        .accept(MediaType.APPLICATION_JSON_UTF8).exchange().expectStatus().isOk().expectHeader()
-        .contentType(MediaType.APPLICATION_JSON_UTF8).expectBody(Parent.class)
-        .consumeWith(response -> {
-          Parent p = response.getResponseBody();
-          Assertions.assertThat(p.getId()).isNotEmpty();
-          Assertions.assertThat(p.getId().length() > 0).isTrue();
-          Assertions.assertThat(p.getName()).isEqualTo("Romero");
+      client.get().uri("/api/everis/parents/{id}", Collections.singletonMap("id", parent.getId()))
+          .accept(MediaType.APPLICATION_JSON_UTF8).exchange().expectStatus().isOk().expectHeader()
+          .contentType(MediaType.APPLICATION_JSON_UTF8).expectBody(Parent.class)
+          .consumeWith(response -> {
+            Parent p = response.getResponseBody();
+            Assertions.assertThat(p.getId()).isNotEmpty();
+            Assertions.assertThat(p.getId().length() > 0).isTrue();
+            Assertions.assertThat(p.getName()).isEqualTo("Romero");
 
 
           });
