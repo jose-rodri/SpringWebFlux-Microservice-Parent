@@ -3,6 +3,7 @@ package jose.rodriguez.everis.peru.app.controller;
 import java.net.URI;
 import java.util.Date;
 import jose.rodriguez.everis.peru.app.models.document.Parent;
+
 import jose.rodriguez.everis.peru.app.models.service.ParentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -73,6 +74,7 @@ public class ParentController {
    * Método actualizar.
    * 
    */
+  
   @PutMapping("/{id}")
   public Mono<ResponseEntity<Parent>> update(@RequestBody Parent parent, @PathVariable String id) {
     return service.findById(id).flatMap(p -> {
@@ -88,7 +90,8 @@ public class ParentController {
 
 
   }
-
+  
+  
 
   /**.
    * @return
@@ -101,5 +104,5 @@ public class ParentController {
     }).defaultIfEmpty(new ResponseEntity<Void>(HttpStatus.NOT_FOUND));
   }
 
-//nuevo
+
 }

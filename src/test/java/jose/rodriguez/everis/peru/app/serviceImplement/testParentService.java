@@ -74,7 +74,7 @@ public class testParentService {
 
 
   @Test
-  public void findById_when_ID_NO_exist() {
+  public void idInvalid() {
     Parent p = new Parent();
     p.setId("iiiiiiiii");
     p.setName("Mae");

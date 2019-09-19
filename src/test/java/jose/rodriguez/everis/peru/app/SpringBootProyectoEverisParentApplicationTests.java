@@ -1,4 +1,4 @@
-package jose.rodriguez.everis.peru.app.controller;
+package jose.rodriguez.everis.peru.app;
 
 import java.util.Collections;
 import java.util.Date;
@@ -19,7 +19,7 @@ import reactor.core.publisher.Mono;
 @RunWith(SpringRunner.class)
 @AutoConfigureWebTestClient
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.MOCK)
-public class testController {
+public class SpringBootProyectoEverisParentApplicationTests {
 
   @Autowired
   private ParentService service;
@@ -47,7 +47,7 @@ public class testController {
   @Test
   public void findByIdParentTest() {
 
-    Parent parent = service.findByName("Alicia").block();
+    Parent parent = service.findByName("Romero").block();
 
     client.get().uri("/api/everis/parents/{id}", Collections.singletonMap("id", parent.getId()))
         .accept(MediaType.APPLICATION_JSON_UTF8).exchange().expectStatus().isOk().expectHeader()
@@ -56,7 +56,7 @@ public class testController {
           Parent p = response.getResponseBody();
           Assertions.assertThat(p.getId()).isNotEmpty();
           Assertions.assertThat(p.getId().length() > 0).isTrue();
-          Assertions.assertThat(p.getName()).isEqualTo("Alicia");
+          Assertions.assertThat(p.getName()).isEqualTo("Romero");
 
         });
 
@@ -67,13 +67,13 @@ public class testController {
    */
   @Test
   public void updateTest() {
-    Parent parent = service.findByName("Arturo").block();
-    Parent parentEditado = new Parent("Arturo", "Gady", "M",new Date(), "dni", 58788878);
+    Parent parent = service.findByName("Zoe").block();
+    Parent parentEditado = new Parent("Zoe", "Gady", "M",new Date(), "dni", 58788878);
     client.put().uri("/api/everis/parents/{id}", Collections.singletonMap("id", parent.getId()))
         .contentType(MediaType.APPLICATION_JSON_UTF8).accept(MediaType.APPLICATION_JSON_UTF8)
         .body(Mono.just(parentEditado), Parent.class).exchange().expectStatus().isCreated()
         .expectHeader().contentType(MediaType.APPLICATION_JSON_UTF8).expectBody().jsonPath("$.id")
-        .isNotEmpty().jsonPath("$.name").isEqualTo("Arturo").jsonPath("$.lastName")
+        .isNotEmpty().jsonPath("$.name").isEqualTo("Zoe").jsonPath("$.lastName")
         .isEqualTo("Gady").jsonPath("$.gender").isEqualTo("M").jsonPath("$.typeDocument")
         .isEqualTo("dni").jsonPath("$.document").isEqualTo(58788878);
 
@@ -84,7 +84,7 @@ public class testController {
    */
   @Test
   public void deleteTest() {
-    Parent parent = service.findByName("Luciana").block();
+    Parent parent = service.findByName("julio").block();
     client.delete().uri("/api/everis/parents/{id}", Collections.singletonMap("id", parent.getId()))
         .exchange().expectStatus().isNoContent().expectBody().isEmpty();
 
