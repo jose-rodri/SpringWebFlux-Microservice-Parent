@@ -1,7 +1,6 @@
 package jose.rodriguez.everis.peru.app;
 
-import java.util.Date;
-import jose.rodriguez.everis.peru.app.models.document.Parent;
+
 import jose.rodriguez.everis.peru.app.models.service.ParentService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -40,10 +39,11 @@ public class SpringBootProyectoEverisParentApplication implements CommandLineRun
 
   @Override
   public void run(String... args) throws Exception {
+    
    
     /*
-    mongoTemplate.dropCollection("parents").subscribe();
-
+   
+mongoTemplate.dropCollection("parents").subscribe();
    
 
     Flux.just(new Parent("Feliciano", "Valdelomar", "M", new Date(), "Dni", 9857123),

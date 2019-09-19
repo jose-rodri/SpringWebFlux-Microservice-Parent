@@ -1,4 +1,4 @@
-package jose.rodriguez.everis.peru.app.controller;
+package jose.rodriguez.everis.peru.app;
 
 import java.util.Collections;
 import java.util.Date;
@@ -19,7 +19,7 @@ import reactor.core.publisher.Mono;
 @RunWith(SpringRunner.class)
 @AutoConfigureWebTestClient
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.MOCK)
-public class testController {
+public class SpringBootProyectoEverisParentApplicationTests {
 
   @Autowired
   private ParentService service;
@@ -47,18 +47,20 @@ public class testController {
   @Test
   public void findByIdParentTest() {
 
-    Parent parent = service.findByName("Alicia").block();
+    Parent parent = service.findByName("Romero").block();
+
 
     if (parent != null) {
 
-      client.get().uri("/api/everis/parents/{id}", Collections.singletonMap("id", parent.getId()))
-          .accept(MediaType.APPLICATION_JSON_UTF8).exchange().expectStatus().isOk().expectHeader()
-          .contentType(MediaType.APPLICATION_JSON_UTF8).expectBody(Parent.class)
-          .consumeWith(response -> {
-            Parent p = response.getResponseBody();
-            Assertions.assertThat(p.getId()).isNotEmpty();
-            Assertions.assertThat(p.getId().length() > 0).isTrue();
-            Assertions.assertThat(p.getName()).isEqualTo("Alicia");
+    client.get().uri("/api/everis/parents/{id}", Collections.singletonMap("id", parent.getId()))
+        .accept(MediaType.APPLICATION_JSON_UTF8).exchange().expectStatus().isOk().expectHeader()
+        .contentType(MediaType.APPLICATION_JSON_UTF8).expectBody(Parent.class)
+        .consumeWith(response -> {
+          Parent p = response.getResponseBody();
+          Assertions.assertThat(p.getId()).isNotEmpty();
+          Assertions.assertThat(p.getId().length() > 0).isTrue();
+          Assertions.assertThat(p.getName()).isEqualTo("Romero");
+
 
           });
 
@@ -70,6 +72,7 @@ public class testController {
    */
   @Test
   public void updateTest() {
+
     Parent parent = service.findByName("Arturo").block();
 
     if (parent != null) {
@@ -90,7 +93,7 @@ public class testController {
    */
   @Test
   public void deleteTest() {
-    
+   
     Parent parent = service.findByName("Luciana").block();
     
     if (parent != null) {
