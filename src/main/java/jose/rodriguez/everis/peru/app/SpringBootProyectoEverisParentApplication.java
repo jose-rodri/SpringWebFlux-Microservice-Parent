@@ -40,10 +40,11 @@ public class SpringBootProyectoEverisParentApplication implements CommandLineRun
 
   @Override
   public void run(String... args) throws Exception {
+    
    
     /*
-    mongoTemplate.dropCollection("parents").subscribe();
-
+   
+mongoTemplate.dropCollection("parents").subscribe();
    
 
     Flux.just(new Parent("Feliciano", "Valdelomar", "M", new Date(), "Dni", 9857123),
